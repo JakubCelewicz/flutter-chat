@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "276480546399",
+    "firebase_url": "https://flutter-chat-bc370.firebaseio.com",
+    "project_id": "flutter-chat-bc370",
+    "storage_bucket": "flutter-chat-bc370.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276480546399:android:a13506b633239807ca6dea",
+        "android_client_info": {
+          "package_name": "pl.cognitive.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276480546399-ecug90rbdvq2phipv5q2vm410bm2tlqr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbwcOri7vzV0sKi8EuIzYEuH7VIbJBX4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276480546399-ecug90rbdvq2phipv5q2vm410bm2tlqr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

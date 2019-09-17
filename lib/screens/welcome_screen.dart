@@ -1,6 +1,7 @@
 import 'package:flash_chat/screens/login_screen.dart';
 import 'package:flash_chat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
+import '../components/RoundedButton.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'welcom_screen';
@@ -11,42 +12,23 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
-  Animation animation;
 
   @override
   void initState() {
     super.initState();
     controller = AnimationController(
-//        duration: Duration(seconds: 1), vsync: this, upperBound: 100.0);
-        duration: Duration(seconds: 1),
-        vsync: this,
-        upperBound: 1);
-
-    // if curvedAnimation is used upperBound should be max 1
-    animation = CurvedAnimation(parent: controller, curve: Curves.decelerate);
+        duration: Duration(seconds: 1), vsync: this, upperBound: 1);
     controller.forward();
-    //controller.reverse(from: 1.0);
-
-    animation.addStatusListener((status) {
-      print(status);
-      if (status == AnimationStatus.completed) {
-        // controller.reverse(from: 1.0);
-      } else if (status == AnimationStatus.dismissed) {
-        // controller.forward();
-      }
-    });
-
-    controller.addListener(() {
-      setState(() {});
-      print(controller.value);
-      print(animation.value);
-    });
   }
 
   @override
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+
+  void navigateTo(screenId) {
+    Navigator.pushNamed(context, screenId);
   }
 
   @override
@@ -65,7 +47,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   tag: 'logo',
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: animation.value * 100,
+                    height: controller.value * 100,
                   ),
                 ),
                 Text(
@@ -80,44 +62,19 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to login screen.
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
+            RoundedButton(
+              title: 'Log in',
+              color: Colors.green,
+              onPressed: () {
+                navigateTo(LoginScreen.id);
+              },
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to registration screen.
-                    Navigator.pushNamed(context, RegistrationScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                  ),
-                ),
-              ),
-            ),
+            RoundedButton(
+                title: 'Register',
+                color: Colors.blue,
+                onPressed: () {
+                  navigateTo(RegistrationScreen.id);
+                })
           ],
         ),
       ),
